@@ -1,7 +1,7 @@
 # iTunes Store App Review Scraper
 
 Install with pip:
-  -**NOTE**: The command below has been confirmed to work when using Git Bash in Administrator mode
+  - **NOTE**: The command below has been confirmed to work when using Git Bash in Administrator mode 
   on a Windows 10 machine. It does not appear to work if attempting to install using cmd. 
   YMMV on other OS, utility combinations.
 
@@ -54,7 +54,6 @@ Dependencies:
 requests>=2.13.0
 pandas>=0.18.1
 dateparser>=0.6.0
-
 ```
 
 Inspired by:
