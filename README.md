@@ -21,13 +21,15 @@ iTunesScraper.get_reviews(app_id, [base_path], [country])
 `app_id` == the ID of the app you wish to scrape
 	-- to find the app_id of an app right click on the app icon in the iTunes store, then click on Copy Link.
 	-- the link will have a form like this: https://itunes.apple.com/us/app/{app name}/id{`app_id`}?mt=8
+
 `base_path` == the (optional) location where iTunesScraper will write CSV files containing app review data
 	-- NOTE: iTunesScraper WILL NOT check to see if base_path exists
 	-- NOTE: I recommend that you write to CSV in most cases, except if you are scraping only a single country
 	-- or are scraping an app with a small number of reviews. Then you can skip the copy to CSV and return results
 	-- directly to memory.
+	
 `country` == the country abbreviation or ID of the country storefront you want to scrape
-	-- See https://affiliate.itunes.apple.com/resources/documentation/linking-to-the-itunes-music-store/#appendix
+	-- See [this] (https://affiliate.itunes.apple.com/resources/documentation/linking-to-the-itunes-music-store/#appendix)
 	-- for a complete list
 	-- If `country` is not used then the tool will scrape all reviews from all country storefronts
 
