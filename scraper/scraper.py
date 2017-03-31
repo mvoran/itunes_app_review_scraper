@@ -4,7 +4,7 @@ import re
 import dateparser
 import pandas as pd
 
-from iscraper.config import Config
+from itunes_app_review_scraper.config import Config
 
 basepath = None
 
@@ -47,7 +47,17 @@ class iTunesScraper(object):
                 review['stars'] = Config.NUMBERS[word]
                 
             review['text'] = text_data.text
-            review['username'] = review_metadata[1][0][0].text.strip()
+
+            #usernames are usually in the first group (review_metadata[1][0][0])
+            #but some CJK usernames are in the second group (review_metadata[1][0])
+            try:
+                review['username'] = review_metadata[1][0][0].text.strip()
+            except:
+                try:
+                    review['username'] = review_metadata[1][0].text.strip()
+                except:
+                    review['username'] = 'UNPARSABLE'
+                
 
             version_date_data = review_metadata[1][0].tail
 
@@ -83,16 +93,6 @@ class iTunesScraper(object):
                 review['date'] = dateparser.parse(date_kr.group(), settings={'DATE_ORDER': 'YMD'})
             else:
                 review['date'] = review_metadata[1][0].tail
-
-            #usernames are usually in the first group (review_metadata[1][0][0])
-            #but some CJK usernames are in the second group (review_metadata[1][0])
-            try:
-                review['username'] = review_metadata[1][0][0].text.strip()
-            except:
-                try:
-                    review['username'] = review_metadata[1][0].text.strip()
-                except:
-                    review['username'] = 'UNPARSABLE'
 
             reviews.append(review)
 
@@ -133,7 +133,7 @@ class iTunesScraper(object):
     def _get_all_countries(cls, app_id):
         reviews = {}
 
-        for country, store_id in Config.COUNTRIES.iteritems():
+        for country, store_id in Config.COUNTRIES.items():
             reviews[country] = cls._get_all_pages(app_id, store_id)
 
         return reviews
@@ -144,7 +144,7 @@ class iTunesScraper(object):
             raise ValueError('Either use a country code or a store id')
 
         if len(country) == 2:
-            if country not in Config.COUNTRIES:
+            if country.upper() not in Config.COUNTRIES:
                 raise ValueError('{} is not a valid country'.format(country))
 
             country = Config.COUNTRIES[country]
