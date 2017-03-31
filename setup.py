@@ -2,11 +2,11 @@ from distutils.core import setup
 
 
 setup(
-    name='iTunesAppReviewScraper',
+    name='itunes_app_review_scraper',
     version='1.0.0',
-    packages=['iTunesAppReviewScraper'],
+    packages=['itunes_app_review_scraper'],
     package_dir={
-        'iTunesAppReviewScraper': 'scraper',
+        'itunes_app_review_scraper': 'scraper',
     },
 
     author='mbvoran',

@@ -1,15 +1,18 @@
 # iTunes Store App Review Scraper
 
 Install with pip:
+  -**NOTE**: The command below has been confirmed to work when using Git Bash in Administrator mode
+  on a Windows 10 machine. It does not appear to work if attempting to install using cmd. 
+  YMMV on other OS, utility combinations.
 
 ```
-pip install git+git://github.com/mvoran/iTunesAppReviewScraper.git@v1.0.0
+pip install git+git://github.com/mvoran/itunes_app_review_scraper.git
 ```
 
 Import it as a module:
 
 ```
-from iTunesAppReviewScraper import iTunesScraper
+from itunes_app_review_scraper import iTunesScraper
 ```
 
 Run it with:
@@ -43,6 +46,15 @@ The return value is a `list` (or `dict` of `lists`) of `dicts` with the followin
   'username': 'AyyLmao123',
   'version': '2.2'
 }
+```
+
+Dependencies:
+
+```
+requests>=2.13.0
+pandas>=0.18.1
+dateparser>=0.6.0
+
 ```
 
 Inspired by:
