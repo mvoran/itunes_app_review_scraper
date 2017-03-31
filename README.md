@@ -6,7 +6,7 @@ Install with pip:
 pip install git+git://github.com/mvoran/iTunesAppReviewScraper.git@v1.0.0
 ```
 
-Import it as a module
+Import it as a module:
 
 ```
 from iTunesAppReviewScraper import iTunesScraper
