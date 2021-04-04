@@ -118,7 +118,7 @@ class iTunesScraper(object):
               filename = str(store_id) + '_' + str(page).zfill(4) + '.csv'
               pdwrite = pd.DataFrame(reviews)
               pdwrite['text'] = pdwrite['text'].str.replace('\r\n', '')
-              pdwrite.to_csv(basepath + filename, sep='|', quotechar='^', lineterminator='\n', encoding='utf-8')
+              pdwrite.to_csv(basepath + filename, sep='|', quotechar='^', line_terminator='\n', encoding='utf-8')
 
               masterfilename = 'AppStoreReviews_' + str(app_id) + '_PagesCopied.txt'
               ofile = open(basepath + masterfilename, 'a')
